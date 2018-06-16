@@ -1,11 +1,13 @@
-module.exports = ()=> {
-    var db = require('../libs/connection')();
-    const Schema = require('mongoose').Schema;
+const db = require('../libs/connection')();
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-    var Perfil = Schema({
-        perfil: String,
-        status: Boolean
-    });
+const Perfil = new Schema({
+    perfil: String,
+    status: {
+        type: Boolean,
+        default: false
+    }
+});
 
-    return db.model('perfiles', Perfil);
-};
+module.exports = mongoose.model('perfiles',Perfil);
