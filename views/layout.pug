@@ -10,18 +10,41 @@ html(lang="en")
         script(src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js")
         link(rel='stylesheet', href='/main.css')
     body
-        <div class="ui top attached demo menu">
-            <a class="item">
-                <i class="sidebar icon"></i> Menu
-            </a>
-        </div>
-        .ui.bottom.attached.segment
-            .ui.vertical.visible.labeled.menu.sidebar
-                a(href="/").item Home
-                a(href="/").item Topics
-                a(href="/").item Friends
-                a(href="/").item History
-            .pusher
+        .header
+            .ui.menu.borderless.header__menu
+                .item.openbtn#left-sidebar-toggle
+                    i.icon.content
+                a.item.openbtn.right(href="")
+                    i.icon.globe
+                a.item.openbtn(href="")
+                    i.icon.bell
+                .ui.item.pointing.dropdown
+                    .text
+                        img.ui.avatar.image(src="/images/logo.jpg", alt="") 
+                        | Jenny Hess
+                    i.dropdown.icon
+                    .menu
+                        .item App
+                        .item App
+                        .item App
+        .context.ui.pushable
+            .ui.vertical.overlay.left.sidebar.menu.borderless
+                .item
+                    <div class="ui input"><input type="text" placeholder="Search..."></div>
+                .item.header OPERACIONES
+                a(href="").item Compras
+                    i.icon.grid.shopping.cart
+                a(href="").item Ventas
+                    i.icon.grid.paypal
+                .item.header LISTAS
+                a(href="").item Perfiles
+                    i.icon.grid.id.card
+                a(href="").item Usuarios
+                    i.icon.grid.user
+                a(href="").item Productos
+                    i.icon.grid.cube
+                a(href="").item Proveedores
+                    i.icon.grid.users
+            .ui.pusher
                 block content
-        </div>
         script(src="/main.js")

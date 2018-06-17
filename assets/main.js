@@ -1,4 +1,19 @@
-$('.ui.sidebar').sidebar({
-    context: $('.bottom.segment')
-  })
-  .sidebar('attach events', '.menu .item');
+$('.ui.sidebar')
+    .sidebar({
+        context: $('.context'),
+        dimPage: false,
+        closable: false,
+        onVisible: function(){
+            $(".pusher").addClass("marginlefting");
+        },
+        onHide: function(){
+            $(".pusher").removeClass("marginlefting");
+        }
+    })
+    .sidebar('attach events', '#left-sidebar-toggle');
+
+$('.item.dropdown')
+    .dropdown({
+        action: 'item'
+    })
+;

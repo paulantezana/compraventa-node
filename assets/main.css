@@ -1,0 +1,21 @@
+.header .header__menu{
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+
+.context .pusher{
+    transition: all .5s !important;
+}
+
+.context .marginlefting {
+    margin-left: 260px !important;
+}
+
+.context .sidebar{
+    box-shadow: none;
+    border-top: none;
+    overflow: visible !important;
+}
