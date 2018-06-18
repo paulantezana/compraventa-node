@@ -12,13 +12,6 @@ body .border-none{
     border-radius: 0 !important;
 }
 
-.context .pusher{
-    transition: all .5s !important;
-}
-
-.context .marginlefting {
-    margin-left: 260px !important;
-}
 
 .context .sidebar{
     box-shadow: none;

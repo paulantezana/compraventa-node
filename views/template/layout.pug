@@ -12,8 +12,8 @@ html(lang="en")
     body
         .header
             .ui.menu.borderless.header__menu
-                .item.openbtn#left-sidebar-toggle
-                    i.icon.content
+                //- .item.openbtn
+                //-     i.icon.cogs
                 a.item.openbtn.right(href="")
                     i.icon.globe
                 a.item.openbtn(href="")
@@ -28,27 +28,36 @@ html(lang="en")
                         .item App
                         .item App
         .context.ui.pushable
-            .ui.vertical.overlay.left.sidebar.menu.borderless
-                .item
-                    .ui.input
-                        input(type="text" placeholder="Search...")
-                .item.header OPERACIONES
-                a(href="/compra").item Compras
-                    i.icon.grid.shopping.cart
-                a(href="/venta").item Ventas
-                    i.icon.grid.paypal
-                .item.header LISTAS
-                a(href="/perfil").item Perfiles
+            .ui.vertical.overlay.left.sidebar.menu.borderless.icon.visible.inverted.blue
+                a(href="/compra").item
+                    i.icon.grid.cart
+                    .menu
+                a(href="/venta").item
+                    i.icon.grid.cart
+                .ui.divider
+                .ui.item.dropdown
                     i.icon.grid.id.card
-                a(href="/usuario").item Usuarios
+                    .menu
+                        a(href="/perfil").item Listar
+                        a(href="/perfil").item Nuevo
+                .ui.item.dropdown
                     i.icon.grid.user
-                a(href="/producto").item Productos
+                    .menu
+                        a(href="/usuario").item Listar
+                        a(href="/usuario").item Nuevo
+                .ui.item.dropdown
                     i.icon.grid.cube
-                a(href="/proveedor").item Proveedores
+                    .menu
+                        a(href="/proveedor").item Listar
+                        a(href="/proveedor").item Nuevo
+                .ui.item.dropdown
                     i.icon.grid.users
-                .item.header ADMIN
-                a(href="/auditoria").item Auditoria
-                    i.icon.grid.users
-            .ui.pusher
+                    .menu
+                        a(href="/proveedor").item Listar
+                        a(href="/proveedor").item Nuevo
+                .ui.divider
+                a(href="/auditoria").item
+                    i.icon.grid.cogs
+            .ui.pusher(style="margin-left: 50.52px;")
                 block content
         script(src="/main.js")
