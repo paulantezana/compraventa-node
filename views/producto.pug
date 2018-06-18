@@ -1,46 +1,42 @@
 extends template/layout
 
 block content
-    .container-content
-    
-        .ui.card(style="border: none!important").border-none
-            .content
-                .header= title
-                .ui.menu.border-none
-                    .item#new
-                        i.icon.plus
-                    .item#print
-                        i.icon.print
-            .content
-                table.ui.celled.table.striped
-                    thead
+    .table-container
+        .table-container__tools
+            button.ui.button.blue#new Nuevo
+            button.ui.button.blue#print Imprimir
+        .table-container__content
+            table.ui.celled.table.striped
+                thead
+                    tr
+                        th Nombre
+                        th Cantidad
+                        th Precio
+                        th Aciones
+                tbody
+                    each producto in productos
                         tr
-                            th Nombre
-                            th Cantidad
-                            th Precio
-                            th Aciones
-                    tbody
-                        each producto in productos
-                            tr
-                                td= producto.nombre
-                                td= producto.cantidad
-                                td= 'S/. ' + producto.precio
-                                td
-                                    a(href="/producto").ui.button.blue editar
-                                    a(href="/producto/eliminar/" + producto._id).ui.button.red eliminar
-        .ui.modal.modal__new
-            i.icon.close
-            .header Nuevo Producto
-            .content
-                form(action="/producto/nuevo", method="post").ui.form
-                    .field
-                        label(for="nombre") Nombre
-                        input#nombre(type="text", name="nombre" placeholder="Nombre")
-                    .field
-                        label(for="cantidad") Cantidad
-                        input#cantidad(type="number", name="cantidad" placeholder="Cantidad")
-                    .field
-                        label(for="precio") Precio
-                        input#precio(type="number", name="precio" placeholder="Precio")
-                    button(type="submit").ui.button.primary Guardar
-        .ui.modal.modal__print
+                            td= producto.nombre
+                            td= producto.cantidad
+                            td= 'S/. ' + producto.precio
+                            td
+                                a(href="/producto").ui.compact.icon.button.blue
+                                    i.icon.edit
+                                a(href="/producto/eliminar/" + producto._id).ui.compact.icon.button.red
+                                    i.icon.trash
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Producto
+        .content
+            form(action="/producto/nuevo", method="post").ui.form
+                .field
+                    label(for="nombre") Nombre
+                    input#nombre(type="text", name="nombre" placeholder="Nombre")
+                .field
+                    label(for="cantidad") Cantidad
+                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad")
+                .field
+                    label(for="precio") Precio
+                    input#precio(type="number", name="precio" placeholder="Precio")
+                button(type="submit").ui.button.primary Guardar
+    .ui.modal.modal__print

@@ -1,5 +1,8 @@
 extends template/layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .table-container
+        .table-container__tools
+            button.ui.button.blue#new Nuevo
+            button.ui.button.blue#print Imprimir
+        .table-container__content

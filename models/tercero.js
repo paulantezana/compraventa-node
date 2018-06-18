@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ProveedorSchema = new Schema({
+const TerceroSchema = new Schema({
     identificacion: {
         type: String,
         required: true
@@ -20,4 +20,4 @@ const ProveedorSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('proveedores',ProveedorSchema);
+module.exports = mongoose.model('terceros',TerceroSchema);

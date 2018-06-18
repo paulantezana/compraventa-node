@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const compraRouter = require('./routes/compra');
 const productoRouter = require('./routes/producto');
-const proveedorRouter = require('./routes/proveedor');
+const terceroRouter = require('./routes/tercero');
 const usuarioRouter = require('./routes/usuario');
 const ventaRouter = require('./routes/venta');
 
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use('/', indexRouter);
 app.use('/compra', compraRouter);
 app.use('/producto', productoRouter);
-app.use('/proveedor', proveedorRouter);
+app.use('/tercero', terceroRouter);
 app.use('/usuario', usuarioRouter);
 app.use('/venta', ventaRouter);
 
