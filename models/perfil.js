@@ -6,12 +6,8 @@ const PerfilSchema = new Schema({
     perfil: {
         type: String,
         required: true
-    },
-    status: {
-        type: Boolean,
-        default: false
-    },
-    usuarios: [usuario]
+    }
+    // usuarios: [usuario]
 });
 
 module.exports = mongoose.model('perfiles',PerfilSchema);

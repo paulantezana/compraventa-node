@@ -1,9 +1,24 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.render('usuario', { title: 'Usuario' });
+const Usuario = require('../models/usuario');
+
+router.get('/', async (req, res, next) => {
+    const usuarios = await Usuario.find();
+    res.render('usuario', { title: 'Usuarios', usuarios });
 });
+
+router.post('/nuevo', async (req, res, next)=>{
+    const usuario = new Usuario(req.body);
+    await usuario.save();
+    res.redirect('/usuario');
+});
+
+router.get('/eliminar/:id', async (req, res, next)=>{
+    const { id } = req.params;
+    await Usuario.remove({_id: id});
+    res.redirect('/usuario');
+});
+
 
 module.exports = router;

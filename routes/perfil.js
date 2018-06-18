@@ -3,9 +3,9 @@ const router = express.Router();
 
 const Perfil = require('../models/perfil');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.render('perfil', { title: 'Perfil' });
+router.get('/', async (req, res, next) => {
+    const perfiles = await Perfil.find();
+    res.render('perfil', { title: 'Usuarios', perfiles });
 });
 
 router.post('/nuevo', async (req, res, next)=>{

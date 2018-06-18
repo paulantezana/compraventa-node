@@ -1,5 +1,43 @@
 extends template/layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    .container-content
+        .ui.card(style="border: none!important").border-none
+            .content
+                .header= title
+                .ui.menu.border-none
+                    .item#new
+                        i.icon.plus
+                    .item#print
+                        i.icon.print
+            .content
+                table.ui.celled.table.striped
+                    thead
+                        tr
+                            th Usuario
+                            th Nombre
+                            th Aciones
+                    tbody
+                        each usuario in usuarios
+                            tr
+                                td= usuario.usuario
+                                td= usuario.nombre
+                                td
+                                    a(href="/usuario").ui.button.blue editar
+                                    a(href="/usuario/eliminar/" + usuario._id).ui.button.red eliminar
+        .ui.modal.modal__new
+            i.icon.close
+            .header Nuevo Producto
+            .content
+                form(action="/usuario/nuevo", method="post").ui.form
+                    .field
+                        label(for="usuario") Usuario
+                        input#usuario(type="text", name="usuario" placeholder="Usuario")
+                    .field
+                        label(for="nombre") Nombre
+                        input#nombre(type="text", name="nombre" placeholder="Nombre")
+                    .field
+                        label(for="clave") Contraseña
+                        input#clave(type="password", name="clave" placeholder="Contraseña")
+                    button(type="submit").ui.button.primary Guardar
+        .ui.modal.modal__print
