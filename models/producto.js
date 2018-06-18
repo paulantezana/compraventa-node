@@ -1,8 +1,13 @@
-module.exports = ()=> {
-    var db = require('../libs/connection')();
-    const Schema = require('mongoose').Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-    var Producto = Schema({
+const ProductoSchema = new Schema({
+    nombre: {
+        type: String,
+        required: true
+    },
+    cantidad: Number,
+    precio: Number
+});
 
-    });
-};
+module.exports = mongoose.model('productos',ProductoSchema);

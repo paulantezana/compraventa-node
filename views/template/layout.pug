@@ -30,20 +30,24 @@ html(lang="en")
         .context.ui.pushable
             .ui.vertical.overlay.left.sidebar.menu.borderless
                 .item
-                    <div class="ui input"><input type="text" placeholder="Search..."></div>
+                    .ui.input
+                        input(type="text" placeholder="Search...")
                 .item.header OPERACIONES
-                a(href="").item Compras
+                a(href="/compra").item Compras
                     i.icon.grid.shopping.cart
-                a(href="").item Ventas
+                a(href="/venta").item Ventas
                     i.icon.grid.paypal
                 .item.header LISTAS
-                a(href="").item Perfiles
+                a(href="/perfil").item Perfiles
                     i.icon.grid.id.card
-                a(href="").item Usuarios
+                a(href="/usuario").item Usuarios
                     i.icon.grid.user
-                a(href="").item Productos
+                a(href="/producto").item Productos
                     i.icon.grid.cube
-                a(href="").item Proveedores
+                a(href="/proveedor").item Proveedores
+                    i.icon.grid.users
+                .item.header ADMIN
+                a(href="/auditoria").item Auditoria
                     i.icon.grid.users
             .ui.pusher
                 block content

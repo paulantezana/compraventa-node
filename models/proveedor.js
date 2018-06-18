@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UsuarioSchema = new Schema({
-    usuario: {
+const ProveedorSchema = new Schema({
+    identificacion: {
         type: String,
         required: true
     },
@@ -10,10 +10,14 @@ const UsuarioSchema = new Schema({
         type: String,
         required: true
     },
-    clave: {
+    direccion: {
+        type: String,
+        required: true
+    },
+    telefono: {
         type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model('usuarios',UsuarioSchema);
+module.exports = mongoose.model('proveedores',ProveedorSchema);

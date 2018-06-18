@@ -6,6 +6,12 @@
     border-left: none;
 }
 
+body .border-none{
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
 .context .pusher{
     transition: all .5s !important;
 }
@@ -18,4 +24,13 @@
     box-shadow: none;
     border-top: none;
     overflow: visible !important;
+}
+
+
+
+.container-content{
+    padding: 1rem;
+}
+.ui.card, .ui.cards>.card{
+    width: 100%;
 }

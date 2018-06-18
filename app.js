@@ -1,13 +1,25 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const mongoose = require('mongoose');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const compraRouter = require('./routes/compra');
+const perfilRouter = require('./routes/perfil');
+const productoRouter = require('./routes/producto');
+const proveedorRouter = require('./routes/proveedor');
+const usuarioRouter = require('./routes/usuario');
+const ventaRouter = require('./routes/venta');
+
+const app = express();
+
+// Connect database
+mongoose.connect('mongodb://localhost/compraventa')
+  .then(db => console.log('DB Connected'))
+  .catch(err => console.log(err));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +32,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/compra', compraRouter);
+app.use('/perfil', perfilRouter);
+app.use('/producto', productoRouter);
+app.use('/proveedor', proveedorRouter);
+app.use('/usuario', usuarioRouter);
+app.use('/venta', ventaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
