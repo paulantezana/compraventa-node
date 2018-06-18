@@ -10,6 +10,11 @@ const UsuarioSchema = new Schema({
         type: String,
         required: true
     },
+    perfil: {
+        type: String,
+        required: true,
+        default: "USUARIO"
+    },
     clave: {
         type: String,
         required: true

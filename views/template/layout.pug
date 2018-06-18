@@ -10,10 +10,8 @@ html(lang="en")
         script(src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js")
         link(rel='stylesheet', href='/main.css')
     body
-        .header
-            .ui.menu.borderless.header__menu
-                //- .item.openbtn
-                //-     i.icon.cogs
+        .ui.menu.borderless.menu__top
+                .item= title
                 a.item.openbtn.right(href="")
                     i.icon.globe
                 a.item.openbtn(href="")
@@ -27,37 +25,23 @@ html(lang="en")
                         .item App
                         .item App
                         .item App
-        .context.ui.pushable
-            .ui.vertical.overlay.left.sidebar.menu.borderless.icon.visible.inverted.blue
+        .context
+            .ui.vertical.overlay.left.sidebar.menu.borderless.icon.visible
                 a(href="/compra").item
                     i.icon.grid.cart
-                    .menu
                 a(href="/venta").item
                     i.icon.grid.cart
                 .ui.divider
-                .ui.item.dropdown
-                    i.icon.grid.id.card
-                    .menu
-                        a(href="/perfil").item Listar
-                        a(href="/perfil").item Nuevo
-                .ui.item.dropdown
+                a(href="/usuario").item
                     i.icon.grid.user
-                    .menu
-                        a(href="/usuario").item Listar
-                        a(href="/usuario").item Nuevo
-                .ui.item.dropdown
+                a(href="/producto").item
                     i.icon.grid.cube
-                    .menu
-                        a(href="/proveedor").item Listar
-                        a(href="/proveedor").item Nuevo
-                .ui.item.dropdown
+                a(href="/proveedor").item
                     i.icon.grid.users
-                    .menu
-                        a(href="/proveedor").item Listar
-                        a(href="/proveedor").item Nuevo
                 .ui.divider
                 a(href="/auditoria").item
                     i.icon.grid.cogs
             .ui.pusher(style="margin-left: 50.52px;")
-                block content
+                .padding1
+                    block content
         script(src="/main.js")

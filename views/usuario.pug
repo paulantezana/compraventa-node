@@ -2,29 +2,29 @@ extends template/layout
 
 block content
     .container-content
-        .ui.card(style="border: none!important").border-none
-            .content
-                .header= title
-                .ui.menu.border-none
-                    .item#new
-                        i.icon.plus
-                    .item#print
-                        i.icon.print
-            .content
-                table.ui.celled.table.striped
+        .table-container
+            .table-container__tools
+                button.ui.button.blue#new Nuevo
+                button.ui.button.blue#print Imprimir
+            .table-container__content
+                table.ui.celled.table.striped.basic
                     thead
                         tr
                             th Usuario
                             th Nombre
+                            th Perfil
                             th Aciones
                     tbody
                         each usuario in usuarios
                             tr
                                 td= usuario.usuario
                                 td= usuario.nombre
+                                td= usuario.perfil
                                 td
-                                    a(href="/usuario").ui.button.blue editar
-                                    a(href="/usuario/eliminar/" + usuario._id).ui.button.red eliminar
+                                    a(href="/usuario").ui.compact.icon.button.blue
+                                        i.icon.edit
+                                    a(href="/usuario/eliminar/" + usuario._id).ui.compact.icon.button.red
+                                        i.icon.trash.alternate
         .ui.modal.modal__new
             i.icon.close
             .header Nuevo Producto
@@ -36,6 +36,12 @@ block content
                     .field
                         label(for="nombre") Nombre
                         input#nombre(type="text", name="nombre" placeholder="Nombre")
+                    .field
+                        label(for="perfil") Nombre
+                        select#perfil(name="perfil").ui.search.dropdown
+                            option(value="ADMIN") Admin
+                            option(value="USUARIO" selected) Usuario
+                            option(value="VENTA") Ventas
                     .field
                         label(for="clave") Contraseña
                         input#clave(type="password", name="clave" placeholder="Contraseña")

@@ -1,29 +1,21 @@
-.header .header__menu{
-    box-shadow: none;
-    border-radius: 0;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-}
-
-body .border-none{
-    box-shadow: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-}
-
-
 .context .sidebar{
     box-shadow: none;
     border-top: none;
     overflow: visible !important;
 }
-
-
-
-.container-content{
+.menu__top{
+    margin-left: 50.52px !important;
+    border-radius: 0 !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    position: relative;
+    z-index: 200;
+}
+.padding1{
     padding: 1rem;
 }
-.ui.card, .ui.cards>.card{
-    width: 100%;
+
+.table-container__tools{
+    margin-bottom: 1.5rem;
 }
