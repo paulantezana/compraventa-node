@@ -9,12 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const mongoose = require('mongoose');
 
-const indexRouter = require('./routes/index');
-const compraRouter = require('./routes/compra');
-const productoRouter = require('./routes/producto');
-const terceroRouter = require('./routes/tercero');
-const usuarioRouter = require('./routes/usuario');
-const ventaRouter = require('./routes/venta');
+const indexRouter = require('./router');
 
 const app = express();
 
@@ -26,7 +21,7 @@ mongoose.connect('mongodb://localhost/compraventa')
 
 // use sessions for tracking logins
 app.use (session ({ 
-    secret: 'work hard',
+    secret: 'a4f8071f-c873-4447-8ee2',
     resave: true,
     saveUninitialized: false,
     store: new MongoStore({
@@ -47,11 +42,6 @@ app.use(express.static(path.join(__dirname, 'assets')));
 
 // Routes
 app.use('/', indexRouter);
-app.use('/compra', compraRouter);
-app.use('/producto', productoRouter);
-app.use('/tercero', terceroRouter);
-app.use('/usuario', usuarioRouter);
-app.use('/venta', ventaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

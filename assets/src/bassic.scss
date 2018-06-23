@@ -53,10 +53,18 @@ pre{
     max-width: 300px;
     width: 100%;
     &__header{
-        margin-bottom: 1rem;
+        margin-bottom: 3rem;
         text-align: center;
         .logo{
-            height: 5rem;
+            height: 6rem;
+        }
+        h1{
+            color: #005DBF;
+            margin: .3em 0 0;
+        }
+        p{
+            font-size: 1.1rem;
+            margin: 0;
         }
     }
 }

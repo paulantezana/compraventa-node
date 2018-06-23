@@ -15,5 +15,5 @@ gulp.task('scss', () =>
 );
 
 gulp.task('default',()=>{
-    gulp.watch('./assets/src/*.scss',['scss'])
+    gulp.watch('./assets/src/**/*.scss',['scss'])
 });
