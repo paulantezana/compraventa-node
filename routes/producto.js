@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Producto = require('../models/producto');
+const requiresLogin = require('../helpers/athenticate');
 
 router.get('/', async (req, res, next) => {
     const productos = await Producto.find();

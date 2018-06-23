@@ -4,6 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const mongoose = require('mongoose');
 
 const indexRouter = require('./routes/index');
@@ -20,6 +23,18 @@ mongoose.connect('mongodb://localhost/compraventa')
   .then(db => console.log('DB Connected'))
   .catch(err => console.log(err));
 
+
+// use sessions for tracking logins
+app.use (session ({ 
+    secret: 'work hard',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    })
+}));
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -30,6 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'assets')));
 
+// Routes
 app.use('/', indexRouter);
 app.use('/compra', compraRouter);
 app.use('/producto', productoRouter);
