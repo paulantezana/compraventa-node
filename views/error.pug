@@ -1,6 +1,9 @@
-extends template/layout
+extends template/bassic
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+    .error-container
+        h1.error__status= error.status
+        h2.error__title= message
+        .error__code
+            pre
+                code #{error.stack}

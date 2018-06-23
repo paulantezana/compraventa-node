@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title= title
+extends template/bassic
+block styles
         link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css")
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
-        script(src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.js")
-        link(rel='stylesheet', href='/main.css')
-    body
-        .login-container
-            .login-container__header
-                h1= title
-                p Bienvenido al asistema de compra venta online desarrollada en node js mongo db
-            form(action="/login", method="post").ui.form
-                .field
-                    label(for="usuario") Usuario
-                    input#usuario(type="text", name="usuario")
-                .field
-                    label(for="clave") Contraseña
-                    input#clave(type="password", name="clave")
-                button(type="submit").ui.button.fluid.blue LOGIN
+block content
+    .login-container
+        .login-container__header
+            img(src="/images/logo.png", alt="logo").logo
+            p Sistema de facturacion
+        form(action="/login", method="post").ui.form
+            .field
+                label(for="usuario") Usuario
+                input#usuario(type="text", name="usuario")
+            .field
+                label(for="clave") Contraseña
+                input#clave(type="password", name="clave")
+            button(type="submit").ui.button.fluid.blue LOGIN

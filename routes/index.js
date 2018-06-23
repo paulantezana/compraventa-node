@@ -4,6 +4,7 @@ var router = express.Router();
 const Usuario = require('../models/usuario');
 
 router.get('/', function(req, res, next) {
+    console.log(req.session.userId);
     if (!req.session){
         res.redirect('/login');
     }
@@ -11,11 +12,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    if (!req.session){
-        res.render('login', { title: 'COMPRA VENTA' });
-    }else {
-        res.redirect('/');
-    }
+    res.render('login', { title: 'COMPRA VENTA' });
+    // if (!req.session){
+    // }else {
+    //     res.redirect('/');
+    // }
 });
 
 router.get('/perfil', function(req, res, next) {
