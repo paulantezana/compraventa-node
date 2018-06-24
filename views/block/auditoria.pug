@@ -1,0 +1,28 @@
+.ui.inverted.segment
+    h4 AUDITORIA
+    .ui.fluid.accordion.inverted
+        each auditoria in auditorias
+            .title
+                .sn-avatar
+                    img.ui.avatar.image(src='/images/logo.jpg')
+                    .sn-avatar__content
+                        div= auditoria.usuario.usuario
+                        div= auditoria.accion
+            .content
+                .transition.hidden
+                    if auditoria.accion
+                        div accion : 
+                            span= auditoria.accion
+                    if auditoria.tabla
+                        div tabla : 
+                            span= auditoria.tabla
+                    if auditoria.anterior
+                        .oldData
+                            pre: code
+                                each value, key in auditoria.anterior
+                                    = key + ': ' + value + '\n'
+                    if auditoria.nuevo
+                        .newData
+                            pre: code
+                                each val, index in auditoria.nuevo
+                                    = index + ': ' + val + '\n'

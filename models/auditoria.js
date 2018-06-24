@@ -5,10 +5,10 @@ const AuditoriaSchema = new Schema({
     fecha: {
         type: Date,
         required: true,
-        default: new Date()
+        default: Date.now()
     },
     usuario: {
-        type: ObjectId,
+        type: {},
         required: true
     },
     accion: {
@@ -26,4 +26,6 @@ const AuditoriaSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('auditoria',AuditoriaSchema);
+const Auditoria = mongoose.model('auditoria',AuditoriaSchema);
+
+module.exports = Auditoria;

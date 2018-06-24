@@ -1,3 +1,7 @@
+$sidebar-1: #122F3B;
+$sidebar-2: #223D48;
+$sidebar-3: #d2d5da;
+
 .context .sidebar{
     box-shadow: none;
     border-top: none;
@@ -15,13 +19,48 @@
     padding: 1rem;
 }
 
-.table-container__tools{
-    margin-bottom: 1.5rem;
+.data{
+    &-container{
+        display: flex;
+        height: calc(100% - 55px);
+    }
+    &__content{
+        flex: 1 1 auto;
+        padding: 1rem;
+        &__tools{
+            margin-bottom: 1.5rem;
+        }
+    }
+    &__audit{
+        flex: 0 0 300px;
+        margin-left: 1rem;
+        overflow: auto;
+        margin-top: -14px;
+        max-height: calc(100vh - 41px);
+    }
 }
 
-$sidebar-1: #122F3B;
-$sidebar-2: #223D48;
-$sidebar-3: #d2d5da;
+// UI Auditory
+.data{
+    &__audit{
+        background: $sidebar-2;
+        .ui.inverted.segment{
+            background: $sidebar-2;
+        }
+        .oldData{
+            color: #ff5076;
+        }
+        .newData{
+            color: greenyellow;
+        }
+    }
+}
+
+.sn-avatar{
+    display: flex;
+    align-items: center;
+}
+
 
 img{
     max-width: 100%;
@@ -35,6 +74,8 @@ img{
         flex: 0 0 200px;
         background: $sidebar-1;
         color: $sidebar-3;
+        max-height: 100vh;
+        overflow: auto;
     }
     .admin-content{
         flex: 1 1 auto;

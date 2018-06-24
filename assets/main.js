@@ -16,6 +16,15 @@ $('.modal__print')
 $('.modal__confirm')
     .modal('attach events', '#confirm', 'show');
 
+// Acordion
+$('.accordion')
+    .accordion({
+        selector: {
+            trigger: '.title'
+        }
+    });
+
+
 // Exporting
 var xport = {
     _fallbacktoCSV: true,  
