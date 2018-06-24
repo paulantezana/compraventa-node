@@ -2,7 +2,6 @@ extends template/layout
 
 block content
     form(action="/tercero/update/" + tercero._id, method="post").ui.form
-        input(type="hidden", name="_id" value= tercero._id)
         .field
             label(for="identificacion") Identificacion
             input#identificacion(type="text", name="identificacion" placeholder="Identificacion" value= tercero.identificacion required)

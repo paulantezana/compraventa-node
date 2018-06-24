@@ -3,8 +3,15 @@ extends template/layout
 block content
     .table-container
         .table-container__tools
-            button.ui.button.blue#new Nuevo
-            button.ui.button.blue#print Imprimir
+            button.ui.labeled.icon.button.blue#new
+                i.plus.square.icon
+                | Nuevo
+            button.ui.labeled.icon.button.blue#print
+                i.print.icon
+                | Imprimir
+            button.ui.labeled.icon.button.blue#exportcsv
+                i.file.excel.icon
+                | CSV
         .table-container__content
             table.ui.celled.table.striped
                 thead
@@ -20,10 +27,9 @@ block content
                             td= producto.cantidad
                             td= 'S/. ' + producto.precio
                             td
-                                a(href="/producto").ui.compact.icon.button.blue
-                                    i.icon.edit
-                                a(href="/producto/eliminar/" + producto._id).ui.compact.icon.button.red
-                                    i.icon.trash
+                                a(href="/producto/view/" + producto._id).ui.compact.labeled.icon.button.blue
+                                    i.icon.eye
+                                    | Ver
     .ui.modal.modal__new
         i.icon.close
         .header Nuevo Producto
@@ -31,12 +37,12 @@ block content
             form(action="/producto/nuevo", method="post").ui.form
                 .field
                     label(for="nombre") Nombre
-                    input#nombre(type="text", name="nombre" placeholder="Nombre")
+                    input#nombre(type="text", name="nombre" placeholder="Nombre" required)
                 .field
                     label(for="cantidad") Cantidad
-                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad")
+                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required)
                 .field
                     label(for="precio") Precio
-                    input#precio(type="number", name="precio" placeholder="Precio")
+                    input#precio(type="number", name="precio" placeholder="Precio" required)
                 button(type="submit").ui.button.primary Guardar
     .ui.modal.modal__print

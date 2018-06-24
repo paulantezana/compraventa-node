@@ -6,8 +6,10 @@ const createProducto = async (req, res, next)=>{
     res.redirect('/producto');
 }
 
-const updateProducto = (req, res, next)=>{
-
+const updateProducto = async (req, res, next)=>{
+    const { id } = req.params;
+    const producto = await Producto.findByIdAndUpdate({_id: id},req.body);
+    res.redirect('/producto/view/' + producto._id);
 }
 
 const allProductos = async (req, res, next)=>{
@@ -21,9 +23,16 @@ const deleteProducto = async (req, res, next)=>{
     res.redirect('/producto');
 }
 
+const viewProducto = async (req, res, next) => {
+    const { id } = req.params;
+    let producto = await Producto.findById({_id:id})
+    res.render('productoedit', { title: 'Producto', producto });
+}
+
 module.exports = {
     createProducto,
     updateProducto,
     allProductos,
-    deleteProducto
+    deleteProducto,
+    viewProducto
 }

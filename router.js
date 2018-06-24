@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const { authorize, logout, profile, login } = require('./controller/usuario');
-const { createUser, updateUser, allUsers, deleteUser } = require('./controller/usuario');
-const { createProducto, updateProducto, allProductos, deleteProducto } = require('./controller/producto');
+const { createUser, viewUser, updateUser, allUsers, deleteUser } = require('./controller/usuario');
+const { createProducto, viewProducto, updateProducto, allProductos, deleteProducto } = require('./controller/producto');
 const { createTercero, viewTercero, updateTercero, allTerceros, deleteTercero } = require('./controller/tercero');
 
 router.get('/', authorize, function(req, res, next) {
@@ -19,15 +19,18 @@ router.post('/login', login);
 router.get('/logout', logout);
 router.get('/perfil', authorize, profile);
 
-
 // USER ROUTER
 router.get('/usuario', authorize, allUsers);
+router.get('/usuario/view/:id', authorize, viewUser);
 router.post('/usuario/nuevo', authorize, createUser);
+router.post('/usuario/update/:id', authorize, updateUser);
 router.get('/usuario/eliminar/:id', authorize, deleteUser);
 
 // PRODUCT ROUTES
 router.get('/producto', authorize, allProductos);
+router.get('/producto/view/:id', authorize, viewProducto);
 router.post('/producto/nuevo', authorize, createProducto);
+router.post('/producto/update/:id', authorize, updateProducto);
 router.get('/producto/eliminar/:id', authorize, deleteProducto);
 
 // TERCERO ROUTES

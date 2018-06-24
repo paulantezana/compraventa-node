@@ -1,11 +1,18 @@
 extends template/layout
-
+block styles
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.js")
 block content
     .table-container
         .table-container__tools
-            button.ui.button.blue#new Nuevo
-            button.ui.button.blue#print Imprimir
-            button.ui.button.blue#exportcsv CSV
+            button.ui.labeled.icon.button.blue#new
+                i.plus.square.icon
+                | Nuevo
+            button.ui.labeled.icon.button.blue#print
+                i.print.icon
+                | Imprimir
+            button.ui.labeled.icon.button.blue#exportcsv
+                i.file.excel.icon
+                | CSV
         .table-container__content
             table.ui.celled.table.striped#datatable
                 thead

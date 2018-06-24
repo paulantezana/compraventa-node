@@ -55,7 +55,7 @@ const profile = async (req, res, next) => {
         if (err) {
             return next(err);
         }else {
-            return res.render('perfil', { title: user.usuario });
+            return res.render('perfil', { title: user.usuario, usuario: user  });
         }
     })
 }
@@ -76,8 +76,10 @@ const createUser = async (req, res, next)=>{
     res.redirect('/usuario');
 }
 
-const updateUser = (req, res, next)=>{
-
+const updateUser = async (req, res, next)=>{
+    const { id } = req.params;
+    const usuario = await Usuario.findByIdAndUpdate({_id: id},req.body);
+    res.redirect('/usuario/view/' + usuario._id);
 }
 
 const allUsers = async (req, res, next)=>{
@@ -91,6 +93,12 @@ const deleteUser = async (req, res, next)=>{
     res.redirect('/usuario');
 }
 
+const viewUser = async (req, res, next) => {
+    const { id } = req.params;
+    let usuario = await Usuario.findById({_id:id})
+    res.render('usuarioedit', { title: 'Usuario', usuario });
+}
+
 module.exports = {
     logout,
     login,
@@ -99,5 +107,6 @@ module.exports = {
     createUser,
     updateUser,
     allUsers,
-    deleteUser
+    deleteUser,
+    viewUser
 }
