@@ -52,13 +52,9 @@ const login = async (req, res, next)=> {
 }
 
 const profile = async (req, res, next) => {
-    await Usuario.findById(req.session.usuario._id).exec(function(err, user){
-        if (err) {
-            return next(err);
-        }else {
-            return res.render('perfil', { title: user.usuario, usuario: user  });
-        }
-    })
+    const auditorias = await Auditoria.find();
+    const usuario = await Usuario.findById(req.session.usuario._id);
+    return res.render('perfil', { title: usuario.usuario, usuario, auditorias  });
 }
 
 const authorize = (req, res, next)=>{

@@ -12,6 +12,8 @@ block tools
         | CSV
 
 block content
+    if erros
+        .ui.red.message= erros
     table.ui.celled.table.striped
         thead
             tr

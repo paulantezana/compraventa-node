@@ -4,12 +4,10 @@ block tools
 
 block content
     form(action="/producto/update/" + producto._id, method="post").ui.form
+        input#cantidad(type="hidden", name="cantidad" placeholder="Cantidad" required value= producto.cantidad)
         .field
             label(for="nombre") Nombre
             input#nombre(type="text", name="nombre" placeholder="Nombre" required value= producto.nombre)
-        .field
-            label(for="cantidad") Cantidad
-            input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required value= producto.cantidad)
         .field
             label(for="precio") Precio
             input#precio(type="number", name="precio" placeholder="Precio" required value= producto.precio)

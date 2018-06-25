@@ -19,6 +19,23 @@ const realizarVenta = async (req, res, next)=>{
     const cantidad = req.body.cantidad;
     const valor = req.body.valor;
 
+    // Validacion de existencia
+    if (producto.cantidad < cantidad){
+        const productos = await Producto.find();
+        const auditorias = await Auditoria.find();
+        const clientes = await Tercero.find();
+        const ventas = await Venta.find();
+        
+        return res.render('venta', { 
+            title: 'Ventas',
+            productos, 
+            auditorias,
+            clientes,
+            ventas,
+            erros: "No existe suficiente cantidad para la venta de " + producto.nombre
+        });
+    }
+
     const venta = new Venta({
         cliente,
         producto,
