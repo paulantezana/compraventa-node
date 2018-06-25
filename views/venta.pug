@@ -2,7 +2,7 @@ extends template/layout
 
 block tools
     button.ui.labeled.icon.button.blue#new
-        i.plus.square.icon
+        i.cart.icon
         | Nueva Venta
     button.ui.labeled.icon.button.blue#print
         i.print.icon
@@ -53,4 +53,6 @@ block content
                 .field
                     label(for="valor") Valor
                     input#precio(type="number", name="valor" placeholder="Valor" required)
-                button(type="submit").ui.button.primary Vender
+                button(type="submit").ui.labeled.icon.button.blue
+                    i.cart.icon
+                    | Vender

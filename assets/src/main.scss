@@ -22,11 +22,12 @@ $sidebar-3: #d2d5da;
 .data{
     &-container{
         display: flex;
-        height: calc(100% - 55px);
+        height: calc(100% - 41px);
     }
     &__content{
         flex: 1 1 auto;
         padding: 1rem;
+        overflow: auto;
         &__tools{
             margin-bottom: 1.5rem;
         }
@@ -35,7 +36,6 @@ $sidebar-3: #d2d5da;
         flex: 0 0 300px;
         margin-left: 1rem;
         overflow: auto;
-        margin-top: -14px;
         max-height: calc(100vh - 41px);
     }
 }
@@ -43,15 +43,21 @@ $sidebar-3: #d2d5da;
 // UI Auditory
 .data{
     &__audit{
-        background: $sidebar-2;
-        .ui.inverted.segment{
-            background: $sidebar-2;
+        .ui.segment{
+            border-radius: 0;
+            box-shadow: none;
+            border-right: none;
+            border-bottom: none;
+            border-top: none;
+            .perfil{
+                text-transform: capitalize;
+            }
         }
         .oldData{
-            color: #ff5076;
+            color: #fc0000;
         }
         .newData{
-            color: greenyellow;
+            color: #00BC00;
         }
     }
 }

@@ -17,6 +17,9 @@ html(lang="en")
                     img(src="/images/logo.svg", alt="")
                 .ui.divider
                 .admin-sidebar__header MOVIMIENTO
+                a(href="/").admin-sidebar__item
+                    i.icon.grid.home
+                    | Home
                 a(href="/compra").admin-sidebar__item
                     i.icon.grid.cart
                     | Compra
@@ -35,27 +38,28 @@ html(lang="en")
                     i.icon.grid.users
                     | Tercero
             .admin-content
-                .ui.menu.borderless.menu__top
-                    .item= title
-                    a.item.openbtn.right(href="")
-                        i.icon.globe
-                    a.item.openbtn(href="")
-                        i.icon.bell
-                    .ui.item.pointing.dropdown
-                        .text
-                            img.ui.avatar.image(src="/images/logo.jpg", alt="") 
-                            | Jenny Hess
-                        i.dropdown.icon
-                        .menu
-                            a(href="/perfil").item
-                                i.icon.user
-                                | Perfil
-                            .item
-                                i.icon.cogs
-                                | Configuracion
-                            a(href="/logout").item 
-                                i.icon.sign.out.alternate
-                                | Cerrar Sesion
+                header.header
+                    .ui.menu.borderless.menu__top
+                        .item= title
+                        a.item.openbtn.right(href="")
+                            i.icon.globe
+                        a.item.openbtn(href="")
+                            i.icon.bell
+                        .ui.item.pointing.dropdown
+                            .text
+                                img.ui.avatar.image(src="/images/logo.jpg", alt="") 
+                                | Jenny Hess
+                            i.dropdown.icon
+                            .menu
+                                a(href="/perfil").item
+                                    i.icon.user
+                                    | Perfil
+                                .item
+                                    i.icon.cogs
+                                    | Configuracion
+                                a(href="/logout").item 
+                                    i.icon.sign.out.alternate
+                                    | Cerrar Sesion
                 .data-container
                     .data__content
                         .data__content__tools

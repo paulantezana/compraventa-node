@@ -1,28 +1,25 @@
-.ui.inverted.segment
+.ui.segment
     h4 AUDITORIA
-    .ui.fluid.accordion.inverted
-        each auditoria in auditorias
-            .title
-                .sn-avatar
-                    img.ui.avatar.image(src='/images/logo.jpg')
-                    .sn-avatar__content
-                        div= auditoria.usuario.usuario
-                        div= auditoria.accion
-            .content
-                .transition.hidden
-                    if auditoria.accion
-                        div accion : 
-                            span= auditoria.accion
-                    if auditoria.tabla
-                        div tabla : 
-                            span= auditoria.tabla
-                    if auditoria.anterior
-                        .oldData
-                            pre: code
-                                each value, key in auditoria.anterior
-                                    = key + ': ' + value + '\n'
-                    if auditoria.nuevo
-                        .newData
-                            pre: code
-                                each val, index in auditoria.nuevo
-                                    = index + ': ' + val + '\n'
+    .ui.fluid.accordion
+        if auditorias
+            each auditoria in auditorias
+                .title
+                    .sn-avatar
+                        img.ui.avatar.image(src='/images/logo.jpg')
+                        .sn-avatar__content
+                            a(href="/perfil").perfil= auditoria.usuario.usuario
+                            div= auditoria.accion + " - " 
+                                if auditoria.tabla
+                                    span= auditoria.tabla
+                .content
+                    .transition.hidden
+                        if auditoria.anterior
+                            .oldData
+                                pre: code
+                                    each value, key in auditoria.anterior
+                                        = key + ': ' + value + '\n'
+                        if auditoria.nuevo
+                            .newData
+                                pre: code
+                                    each val, index in auditoria.nuevo
+                                        = index + ': ' + val + '\n'
