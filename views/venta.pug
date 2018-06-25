@@ -1,9 +1,54 @@
 extends template/layout
 
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nueva Venta
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
 block content
-    .data-container
-    .table-container
-        .table-container__tools
-            button.ui.button.blue#new Nuevo
-            button.ui.button.blue#print Imprimir
-        .table-container__content
+    table.ui.celled.table.striped
+        thead
+            tr
+                th fecha
+                th Cliente
+                th Producto
+                th Cantidad
+                th Valor
+                th Usuario
+        tbody
+            each venta in ventas
+                tr
+                    td= venta.fecha
+                    td= venta.cliente.nombre
+                    td= venta.producto.nombre
+                    td= venta.cantidad
+                    td= venta.valor
+                    td= venta.usuario.nombre
+    .ui.modal.modal__new
+        i.icon.close
+        .header Nuevo Venta
+        .content
+            form(action="/vender", method="post").ui.form
+                .field
+                    label(for="cliente") Cliente
+                    select#perfil(name="cliente").ui.search.dropdown
+                        each cliente in clientes
+                            option(value= cliente._id )= cliente.nombre
+                .field
+                    label(for="producto") Productos
+                    select#perfil(name="producto").ui.search.dropdown
+                        each producto in productos
+                            option(value= producto._id )= producto.nombre
+                .field
+                    label(for="cantidad") Cantidad
+                    input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required)
+                .field
+                    label(for="valor") Valor
+                    input#precio(type="number", name="valor" placeholder="Valor" required)
+                button(type="submit").ui.button.primary Vender

@@ -8,7 +8,7 @@ const compra = async (req, res, next)=>{
     const auditorias = await Auditoria.find();
     const proveedores = await Tercero.find();
     const compras = await Compra.find();
-    res.render('compra', { title: 'Producto', productos, auditorias, proveedores, compras });
+    res.render('compra', { title: 'Compras', productos, auditorias, proveedores, compras });
 }
 
 const realizarCompra = async (req, res, next)=>{

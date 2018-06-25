@@ -6,6 +6,7 @@ const { createUser, viewUser, updateUser, allUsers, deleteUser } = require('./co
 const { createProducto, viewProducto, updateProducto, allProductos, deleteProducto } = require('./controller/producto');
 const { createTercero, viewTercero, updateTercero, allTerceros, deleteTercero } = require('./controller/tercero');
 const { compra, realizarCompra, anularCompra } = require('./controller/compra');
+const { venta, realizarVenta, anularVenta } = require('./controller/venta');
 
 router.get('/', authorize, function(req, res, next) {
     res.render('index', { title: 'Express' });
@@ -44,5 +45,9 @@ router.get('/tercero/eliminar/:id', authorize, deleteTercero);
 // COMPRA
 router.get('/compra', authorize, compra)
 router.post('/comprar', authorize, realizarCompra)
+
+//VENTA
+router.get('/venta', authorize, venta)
+router.post('/vender', authorize, realizarVenta)
 
 module.exports = router;

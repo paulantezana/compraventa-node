@@ -5,23 +5,28 @@ const VentaSchema = new Schema({
     fecha: {
         type: Date,
         required: true,
-        default: new Date()
+        default: Date.now()
     },
-    tercero: {
-        type: ObjectId,
+
+    cliente: {
+        type: {},
         required: true
     },
+
     producto: {
-        type: ObjectId,
+        type: {},
         required: true
     },
+
     cantidad: {
         type: Number,
         required: true
     },
+
     valor: Number,
+    
     usuario: {
-        type: ObjectId,
+        type: {},
         required: true
     }
 });
