@@ -1,5 +1,7 @@
 extends template/layout
 
+block tools
+
 block content
     form(action="/producto/update/" + producto._id, method="post").ui.form
         .field

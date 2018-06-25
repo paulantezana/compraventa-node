@@ -1,38 +1,34 @@
 extends template/layout
 
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nuevo
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
+
 block content
-    .data-container
-        .data__content
-            .data__content__tools
-                button.ui.labeled.icon.button.blue#new
-                    i.plus.square.icon
-                    | Nuevo
-                button.ui.labeled.icon.button.blue#print
-                    i.print.icon
-                    | Imprimir
-                button.ui.labeled.icon.button.blue#exportcsv
-                    i.file.excel.icon
-                    | CSV
-            .data__content__content
-                table.ui.celled.table.striped
-                    thead
-                        tr
-                            th Nombre
-                            th Cantidad
-                            th Precio
-                            th Aciones
-                    tbody
-                        each producto in productos
-                            tr
-                                td= producto.nombre
-                                td= producto.cantidad
-                                td= 'S/. ' + producto.precio
-                                td
-                                    a(href="/producto/view/" + producto._id).ui.compact.labeled.icon.button.blue
-                                        i.icon.eye
-                                        | Ver
-        .data__audit
-            include block/auditoria
+    table.ui.celled.table.striped
+        thead
+            tr
+                th Nombre
+                th Cantidad
+                th Precio
+                th Aciones
+        tbody
+            each producto in productos
+                tr
+                    td= producto.nombre
+                    td= producto.cantidad
+                    td= 'S/. ' + producto.precio
+                    td
+                        a(href="/producto/view/" + producto._id).ui.compact.labeled.icon.button.blue
+                            i.icon.eye
+                            | Ver
     .ui.modal.modal__new
         i.icon.close
         .header Nuevo Producto
@@ -48,4 +44,3 @@ block content
                     label(for="precio") Precio
                     input#precio(type="number", name="precio" placeholder="Precio" required)
                 button(type="submit").ui.button.primary Guardar
-    .ui.modal.modal__print

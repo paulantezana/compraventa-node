@@ -1,4 +1,5 @@
 const Usuario = require('../models/usuario');
+const Auditoria = require('../models/auditoria');
 const bcrypt = require('bcrypt');
 
 const logout = (req, res, next)=> {
@@ -84,7 +85,8 @@ const updateUser = async (req, res, next)=>{
 
 const allUsers = async (req, res, next)=>{
     const usuarios = await Usuario.find();
-    res.render('usuario', { title: 'Usuarios', usuarios });
+    const auditorias = await Auditoria.find();
+    res.render('usuario', { title: 'Usuarios', usuarios, auditorias });
 }
 
 const deleteUser = async (req, res, next)=>{
@@ -96,7 +98,8 @@ const deleteUser = async (req, res, next)=>{
 const viewUser = async (req, res, next) => {
     const { id } = req.params;
     let usuario = await Usuario.findById({_id:id})
-    res.render('usuarioedit', { title: 'Usuario', usuario });
+    const auditorias = await Auditoria.find();
+    res.render('usuarioedit', { title: 'Usuario', usuario, auditorias });
 }
 
 module.exports = {

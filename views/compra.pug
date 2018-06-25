@@ -1,8 +1,39 @@
 extends template/layout
 
+block tools
+
 block content
-    .table-container
-        .table-container__tools
-            button.ui.button.blue#new Nuevo
-            button.ui.button.blue#print Imprimir
-        .table-container__content
+    form(action="/comprar", method="post").ui.form
+        .field
+            label(for="proveedor") Proveedor
+            select#perfil(name="proveedor").ui.search.dropdown
+                each proveedor in proveedores
+                    option(value= proveedor._id )= proveedor.nombre
+        .field
+            label(for="producto") Productos
+            select#perfil(name="producto").ui.search.dropdown
+                each producto in productos
+                    option(value= producto._id )= producto.nombre
+        .field
+            label(for="cantidad") Cantidad
+            input#cantidad(type="number", name="cantidad" placeholder="Cantidad" required)
+        .field
+            label(for="valor") Valor
+            input#precio(type="number", name="valor" placeholder="Valor" required)
+        button(type="submit").ui.button.primary Comprar
+    table.ui.celled.table.striped
+        thead
+            tr
+                th fecha
+                th Proveedor
+                th Producto
+                th Cantidad
+                th Valor
+                th Usuario
+        tbody
+            each compra in compras
+                tr
+                    td= compra.nombre
+                    td= compra.cantidad
+                    td= compra.cantidad
+                    td= compra.cantidad

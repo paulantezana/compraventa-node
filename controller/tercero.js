@@ -1,4 +1,5 @@
 const Tercero = require('../models/tercero');
+const Auditoria = require('../models/auditoria');
 
 const createTercero = async (req, res, next)=>{
     const tercero = new Tercero(req.body);
@@ -14,7 +15,8 @@ const updateTercero = async (req, res, next)=>{
 
 const allTerceros = async (req, res, next)=>{
     const terceros = await Tercero.find();
-    res.render('tercero', { title: 'Terceros', terceros });
+    const auditorias = await Auditoria.find();
+    res.render('tercero', { title: 'Terceros', terceros, auditorias });
 }
 
 const deleteTercero = async (req, res, next)=>{
@@ -26,7 +28,8 @@ const deleteTercero = async (req, res, next)=>{
 const viewTercero = async (req, res, next) => {
     const { id } = req.params;
     let tercero = await Tercero.findById({_id:id})
-    res.render('terceroedit', { title: 'Terceros', tercero });
+    const auditorias = await Auditoria.find();
+    res.render('terceroedit', { title: 'Terceros', tercero, auditorias });
 }
 
 module.exports = {

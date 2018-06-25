@@ -68,7 +68,8 @@ const deleteProducto = async (req, res, next)=>{
 const viewProducto = async (req, res, next) => {
     const { id } = req.params;
     let producto = await Producto.findById({_id:id})
-    res.render('productoedit', { title: 'Producto', producto });
+    const auditorias = await Auditoria.find();
+    res.render('productoedit', { title: 'Producto', producto, auditorias });
 }
 
 module.exports = {

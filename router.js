@@ -5,6 +5,7 @@ const { authorize, logout, profile, login } = require('./controller/usuario');
 const { createUser, viewUser, updateUser, allUsers, deleteUser } = require('./controller/usuario');
 const { createProducto, viewProducto, updateProducto, allProductos, deleteProducto } = require('./controller/producto');
 const { createTercero, viewTercero, updateTercero, allTerceros, deleteTercero } = require('./controller/tercero');
+const { compra, realizarCompra, anularCompra } = require('./controller/compra');
 
 router.get('/', authorize, function(req, res, next) {
     res.render('index', { title: 'Express' });
@@ -39,5 +40,9 @@ router.get('/tercero/view/:id', authorize, viewTercero);
 router.post('/tercero/nuevo', authorize, createTercero);
 router.post('/tercero/update/:id', authorize, updateTercero);
 router.get('/tercero/eliminar/:id', authorize, deleteTercero);
+
+// COMPRA
+router.get('/compra', authorize, compra)
+router.post('/comprar', authorize, realizarCompra)
 
 module.exports = router;

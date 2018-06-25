@@ -60,5 +60,12 @@ html(lang="en")
                             a(href="/logout").item 
                                 i.icon.sign.out.alternate
                                 | Cerrar Sesion
-                block content
+                .data-container
+                    .data__content
+                        .data__content__tools
+                            block tools
+                        .data__content__content
+                            block content
+                    .data__audit
+                        include ../block/auditoria
         script(src="/main.js")

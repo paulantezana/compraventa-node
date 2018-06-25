@@ -1,35 +1,33 @@
 extends template/layout
+block tools
+    button.ui.labeled.icon.button.blue#new
+        i.plus.square.icon
+        | Nuevo
+    button.ui.labeled.icon.button.blue#print
+        i.print.icon
+        | Imprimir
+    button.ui.labeled.icon.button.blue#exportcsv
+        i.file.excel.icon
+        | CSV
 
 block content
-    .table-container
-        .table-container__tools
-            button.ui.labeled.icon.button.blue#new
-                i.plus.square.icon
-                | Nuevo
-            button.ui.labeled.icon.button.blue#print
-                i.print.icon
-                | Imprimir
-            button.ui.labeled.icon.button.blue#exportcsv
-                i.file.excel.icon
-                | CSV
-        .table-container__content
-            table.ui.celled.table.striped.basic
-                thead
-                    tr
-                        th Usuario
-                        th Nombre
-                        th Perfil
-                        th Aciones
-                tbody
-                    each usuario in usuarios
-                        tr
-                            td= usuario.usuario
-                            td= usuario.nombre
-                            td= usuario.perfil
-                            td
-                                a(href="/usuario/view/" + usuario._id).ui.compact.labeled.icon.button.blue
-                                    i.icon.eye
-                                    | Ver
+    table.ui.celled.table.striped.basic
+        thead
+            tr
+                th Usuario
+                th Nombre
+                th Perfil
+                th Aciones
+        tbody
+            each usuario in usuarios
+                tr
+                    td= usuario.usuario
+                    td= usuario.nombre
+                    td= usuario.perfil
+                    td
+                        a(href="/usuario/view/" + usuario._id).ui.compact.labeled.icon.button.blue
+                            i.icon.eye
+                            | Ver
     .ui.modal.modal__new
         i.icon.close
         .header Nuevo Producto

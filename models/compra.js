@@ -5,25 +5,32 @@ const CompraSchema = new Schema({
     fecha: {
         type: Date,
         required: true,
-        default: new Date()
+        default: Date.now()
     },
-    tercero: {
-        type: ObjectId,
+
+    proveedor: {
+        type: {},
         required: true
     },
+
     producto: {
-        type: ObjectId,
+        type: {},
         required: true
     },
+
     cantidad: {
         type: Number,
         required: true
     },
+
     valor: Number,
+    
     usuario: {
-        type: ObjectId,
+        type: {},
         required: true
     }
 });
 
-module.exports = mongoose.model('compras',CompraSchema);
+Compra = mongoose.model('compras',CompraSchema)
+
+module.exports = Compra;
