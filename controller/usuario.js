@@ -11,6 +11,19 @@ const logout = (req, res, next)=> {
 }
 
 const login = async (req, res, next)=> {
+    // crea un usuario admin cuando no hay nigun registro en la base de datos
+    const u = await Usuario.find()
+    if (!u.length) {
+        t = new Usuario({
+            usuario: 'admin',
+            clave: await bcrypt.hash('admin', 10),
+            perfil: 'USUARIO',
+            nombre: 'admin'
+        })
+        await t.save();
+        return res.redirect('/login');
+    }
+
     // Validations
     if(!req.body.clave || !req.body.usuario){
         return res.render('login', { 
@@ -67,7 +80,7 @@ const authorize = (req, res, next)=>{
 
 const createUser = async (req, res, next)=>{
     const usuario = new Usuario(req.body);
-    let hashPassword = await bcrypt.hash(req.body.clave, 10,);
+    let hashPassword = await bcrypt.hash(req.body.clave, 10);
     usuario.clave = hashPassword;
     await usuario.save();
     res.redirect('/usuario');

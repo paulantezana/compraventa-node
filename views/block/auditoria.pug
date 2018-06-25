@@ -1,6 +1,6 @@
 .ui.segment
     h4 AUDITORIA
-    .ui.fluid.accordion
+    .ui.fluid.accordion.styled
         if auditorias
             each auditoria in auditorias
                 .title
@@ -11,6 +11,7 @@
                             div= auditoria.accion + " - " 
                                 if auditoria.tabla
                                     span= auditoria.tabla
+                        .icon.dropdown(style="margin-left: auto")
                 .content
                     .transition.hidden
                         if auditoria.anterior
